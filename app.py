@@ -1,6 +1,7 @@
 import streamlit as st
 import pandas as pd
 import joblib
+import plotly.express as px
 
 from feature_engineering.feature_extractor import extract_features
 # from llm.ollama_explainer import explain_code_quality
@@ -95,6 +96,27 @@ if st.button("Analyze Code"):
             )
 
             st.dataframe(feature_df)
+
+
+            # Metrics Bar Chart
+
+            st.subheader("Code Metrics Visualization")
+            metrics_df=pd.DataFrame({
+                "Metric": feature_df.columns,
+                "Value": feature_df.iloc[0].values
+            })
+
+            fig = px.bar(
+                metrics_df,
+                x="Metric",
+                y="Value",
+                title="Extracted Code Metrics"
+            )
+
+            st.plotly_chart(
+                fig,
+                use_container_width=True
+            )
 
             
             # LLM Explanation for local version
