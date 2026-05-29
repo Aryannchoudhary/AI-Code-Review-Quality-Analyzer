@@ -165,10 +165,10 @@ Install Ollama:
 
 https://ollama.com/
 
-Run TinyLlama:
+Run llama 3:
 
 ```bash
-ollama run tinyllama
+ollama run llama 3
 ```
 
 The local version supports AI-generated code review explanations.
