@@ -3,7 +3,7 @@ import pandas as pd
 import joblib
 
 from feature_engineering.feature_extractor import extract_features
-from llm.ollama_explainer import explain_code_quality
+# from llm.ollama_explainer import explain_code_quality
 
 
 # Load Model
@@ -98,18 +98,30 @@ if st.button("Analyze Code"):
 
             
             # LLM Explanation
+            # st.subheader(
+            #     "AI Explanation"
+            # )
+
+            # with st.spinner(
+            #     "Generating explanation..."
+            # ):
+
+            #     explanation = explain_code_quality(
+            #         code_input,
+            #         prediction_label,
+            #         features
+            #     )
+
+            # st.write(explanation)
+
+
+            # AI Explanation
+
             st.subheader(
-                "AI Explanation"
+
+                "AI Explanation "
             )
-
-            with st.spinner(
-                "Generating explanation..."
-            ):
-
-                explanation = explain_code_quality(
-                    code_input,
-                    prediction_label,
-                    features
-                )
-
-            st.write(explanation)
+            st.info(
+                "LLM explanations are available in the local version using Ollama."
+            )
+            
