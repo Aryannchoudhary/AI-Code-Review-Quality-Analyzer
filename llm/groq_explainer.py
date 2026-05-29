@@ -2,7 +2,7 @@ import requests
 import os
 
 
-GROQ_API_KEY = os.secret("GROQ_API_KEY")
+GROQ_API_KEY = os.secrets("GROQ_API_KEY")
 
 def explain_code_quality(code, prediction, features):
 
