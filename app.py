@@ -25,11 +25,11 @@ label_map = {
 # Streamlit UI
 
 st.set_page_config(
-    page_title="AI Code Quality Analyzer",
+    page_title="AI Code Review & Quality Analyzer",
     layout="wide"
 )
 
-st.title(" AI Code Quality Analyzer")
+st.title(" AI Code Review & Quality Analyzer")
 
 st.write(
     "Analyze Python code using ML + LLM"
