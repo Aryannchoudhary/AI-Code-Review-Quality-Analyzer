@@ -97,7 +97,7 @@ if st.button("Analyze Code"):
             st.dataframe(feature_df)
 
             
-            # LLM Explanation
+            # LLM Explanation for local version
             # st.subheader(
             #     "AI Explanation"
             # )
@@ -115,7 +115,7 @@ if st.button("Analyze Code"):
             # st.write(explanation)
 
 
-            # AI Explanation
+            # AI Explanation for deployment version
 
             st.subheader(
 
