@@ -200,6 +200,7 @@ with tab2:
                 )
 
                 all_features = []
+                file_results= []
 
                 # Analyze first 20 files
                 for file_url in files[:20]:
@@ -219,6 +220,35 @@ with tab2:
                                 features
                             )
 
+                            feature_df = pd.DataFrame(
+                                [features]
+                            )
+
+                            file_prediction = model.predict(
+                                feature_df
+                            )[0]
+
+                            file_label = label_map[
+                                file_prediction 
+                            ]
+
+                            file_results.append({
+                                "File": file_url.split("/")[-1],
+                                "Quality": file_label,
+                                "Maintainability": round(
+                                    features.get(
+                                        "maintainability", 0
+                                        ), 2
+                                    ),
+                                "Complexity": round(
+                                    features.get(
+                                        "avg_complexity", 0
+                                        ), 2
+                                    ),
+                            })
+
+
+
                 if len(all_features) == 0:
 
                     st.error(
@@ -226,6 +256,19 @@ with tab2:
                     )
 
                 else:
+                    
+                    file_df = pd.DataFrame(
+                        file_results
+                    )
+
+                    st.subheader(
+                        "File-Level Analysis"
+                    )
+
+                    st.dataframe(
+                        file_df,
+                        use_container_width=True
+                    )
 
                     repo_df = pd.DataFrame(
                         all_features
