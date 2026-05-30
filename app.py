@@ -431,7 +431,9 @@ with tab2:
                         repo_url,
                         prediction_label,
                         health_score,
-                        explanation
+                        explanation,
+                        avg_metrics,
+                        file_df
                     )
 
                     with open(
