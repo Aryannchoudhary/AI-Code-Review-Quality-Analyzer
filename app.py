@@ -14,9 +14,8 @@ from github_integration.github_fetcher import (
     parse_repo_url
 )
 
-from utils.report_generator import (
-    generate_pdf_report
-)
+
+from utils.report_generator import generate_pdf_report
 
 # Load Trained XGBoost Model
 model = joblib.load("models/xgboost.pkl")
