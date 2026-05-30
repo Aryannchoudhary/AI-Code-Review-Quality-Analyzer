@@ -1,214 +1,150 @@
 #  AI Code Review & Quality Analyzer
 
-An AI-powered system that analyzes Python source code, predicts code quality using Machine Learning, and provides intelligent improvement suggestions using Large Language Models (Groq LLM).
+An AI-powered tool that analyzes Python code and GitHub repositories using Machine Learning + Feature Engineering + LLM-based explanations.
+
+It provides:
+- Code quality prediction
+- File-wise repository analysis
+- Repository health score
+- AI-generated suggestions
+- PDF report download
+
+---
 
 ##  Features
 
-###  Code Quality Analysis
-
-* Analyze Python code instantly
-* Predict code quality levels:
-
-  *  Good
-  *  Average
-  *  Poor
-
-### AI-Powered Code Review
-
-* Generates detailed code review explanations
-* Identifies maintainability issues
-* Highlights complexity concerns
-* Suggests code improvements
-
-###  Explainable AI Dashboard
-
-* Displays extracted code metrics
-* Feature importance visualization
-* Interactive charts and graphs
-* Quality prediction confidence
-
-###  Cloud-Based LLM Integration
-
-* Groq API integration
-* Fast AI explanations
-* No local LLM setup required
-
-###  Streamlit Web Application
-
-* User-friendly interface
-* Real-time code analysis
-* Interactive visualizations
+###  Code Analysis (Single File)
+- Paste Python code
+- Predict code quality (Good / Average / Poor)
+- Extract code metrics
+- AI-generated improvement suggestions
+- Visual metrics dashboard
 
 ---
 
-##  Project Architecture
-
-```text
-User Input Python Code
-            │
-            ▼
-Feature Extraction Engine
-            │
-            ▼
-Extracted Metrics
-(LOC, Complexity, Maintainability, Comments, Functions, Classes)
-            │
-            ▼
-XGBoost Model
-            │
-            ▼
-Quality Prediction
-(Good / Average / Poor)
-            │
-            ▼
-Groq LLM
-            │
-            ▼
-AI Explanation & Suggestions
-            │
-            ▼
-Streamlit Dashboard
-```
+###  GitHub Repository Analysis
+- Analyze complete GitHub repositories
+- Automatically fetch `.py` and `.ipynb` files
+- Extract features from each file
+- File-wise quality prediction
+- Repository-level insights
 
 ---
 
-##  Extracted Features
+###  File-wise Analysis
+- Quality prediction per file
+- Maintainability score
+- Complexity score
+- Visual table of all files
 
-The system analyzes:
+---
 
-* Lines of Code (LOC)
-* Logical Lines of Code (LLOC)
-* Source Lines of Code (SLOC)
-* Cyclomatic Complexity
-* Maintainability Index
-* Number of Functions
-* Number of Classes
-* Import Statements
-* Comments Count
+### Repository Health Score
+- Overall repository health (0–100)
+- Based on:
+  - Maintainability
+  - Complexity
+  - Comments
+  - Function usage
+- Health status indicator:
+  - Excellent / Good / Moderate / Poor
+
+---
+
+### AI Repository Review
+- LLM-powered explanation using Groq/OpenAI
+- Strengths & weaknesses analysis
+- Improvement recommendations
+
+---
+
+###  PDF Report Generation
+- Download full analysis report
+- Includes:
+  - Repository summary
+  - File-wise analysis table
+  - Metrics table
+  - Health score
+  - AI review
 
 ---
 
 ##  Tech Stack
 
-### Machine Learning
-
-* Python
-* Scikit-Learn
-* XGBoost
-* Pandas
-* NumPy
-
-### AI & LLM
-
-* Groq API
-* Llama Models
-
-### Frontend
-
-* Streamlit
-
-### Visualization
-
-* Matplotlib
-* Plotly
+- Python
+- Streamlit
+- Scikit-learn
+- XGBoost
+- Pandas
+- Plotly
+- ReportLab (PDF generation)
+- GitHub API
+- LLM (Groq / OpenAI)
 
 ---
 
 ##  Project Structure
-
-```text
 AI-Code-Review-Quality-Analyzer/
 │
 ├── app.py
 ├── models/
-│   └── xgboost.pkl
-│
+├── github_integration/
+│ └── github_fetcher.py
 ├── feature_engineering/
-│   └── feature_extractor.py
-│
 ├── llm/
-│   └── groq_explainer.py
-│
-├── data/
-│
-├── notebooks/
-│
-├── requirements.txt
-│
-└── README.md
-```
+├── utils/
+│ └── report_generator.py
+├── suggestions.py
+└── requirements.txt
+
+
 
 ---
 
 ## Installation
 
-### Clone Repository
-
 ```bash
-git clone https://github.com/Aryannchoudhary/AI-Code-Review-Quality-Analyzer.git
+git clone https://github.com/your-username/AI-Code-Review-Quality-Analyzer.git
 cd AI-Code-Review-Quality-Analyzer
-```
-
-### Install Dependencies
-
-```bash
 pip install -r requirements.txt
-```
 
-### Configure API Key
 
-Create Streamlit Secrets or Environment Variable:
+## Run application
 
-```toml
-GROQ_API_KEY="your_api_key"
-```
-
-### Run Application
-
-```bash
 streamlit run app.py
-```
 
----
 
-##  Sample Output
+## Requirements
+streamlit
+pandas
+scikit-learn
+xgboost
+plotly
+requests
+reportlab
+joblib
 
-### Prediction
 
-```text
+## Output Example
 Code Quality: Good
-```
+Repository Health Score: 87/100
+File-wise Analysis: Table view
+PDF Report: Downloadable
 
-### AI Explanation
 
-```text
-The code demonstrates good maintainability and low complexity.
-Consider adding more comments and error handling to improve readability.
-```
+## Future Improvements
+    Security vulnerability detection (Bandit)
+    GitHub commit history analysis
+    Multi-language support (JS, Java)
+    AI code auto-fixing suggestions
+    Team collaboration dashboard
 
----
 
-##  Future Scope
 
-* Rule-Based Code Suggestion Engine
-* Multi-Language Support
-* Security Vulnerability Detection
-* Code Smell Detection
-* CI/CD Integration
-* GitHub Pull Request Review Automation
-* Advanced AI Refactoring Suggestions
-* Transformer-Based Quality Prediction
+## Author
+Aryan 
+AI/ML Developer | Python | Streamlit | LLM Apps
 
----
+If you like this project
 
-##  Author
-
-Aryan
-
-### GitHub
-
-https://github.com/Aryannchoudhary
-
----
-
-##  If you found this project useful, please give it a star!
+Give it a star ⭐ and share it!

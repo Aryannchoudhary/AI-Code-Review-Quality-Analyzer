@@ -157,6 +157,7 @@ def generate_pdf_report(
         )
     )
 
+
     content.append(
         Paragraph(
             explanation[:2000],
