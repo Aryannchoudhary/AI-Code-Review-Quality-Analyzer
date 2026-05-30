@@ -20,24 +20,39 @@ def get_python_files(owner, repo):
 
     def traverse(url):
 
-        response = requests.get(url)
+    headers = {
+        "Accept": "application/vnd.github+json",
+        "User-Agent": "AI-Code-Analyzer"
+    }
 
-        if response.status_code != 200:
-            return
+    response = requests.get(url, headers=headers)
 
-        contents = response.json()
+    print("URL:", url)
+    print("Status Code:", response.status_code)
 
-        for item in contents:
+    if response.status_code != 200:
+        print("Error:", response.text)
+        return
 
-            if item["type"] == "file" and item["name"].endswith(".py"):
-                python_files.append(item["download_url"])
+    contents = response.json()
 
-            elif item["type"] == "dir":
-                traverse(item["url"])
+    for item in contents:
 
-    traverse(api_url)
+        print(item["name"], item["type"])
 
-    return python_files
+        if item["type"] == "file" and item["name"].endswith(".py"):
+
+            print("FOUND PYTHON FILE:", item["name"])
+
+            python_files.append(
+                item["download_url"]
+            )
+
+        elif item["type"] == "dir":
+
+            traverse(
+                item["url"]
+            )
 
 def get_file_content(download_url):
 

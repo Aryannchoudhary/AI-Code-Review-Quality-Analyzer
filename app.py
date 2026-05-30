@@ -175,11 +175,18 @@ with tab2:
                 repo_url
             )
 
+            st.write("Owner:", owner)
+            st.write("Repo:", repo)
+
+
             # Get Python Files
             files = get_python_files(
                 owner,
                 repo
             )
+
+            st.write("Files Found:", len(files))
+            st.write(files)
 
             if len(files) == 0:
                 st.error(
