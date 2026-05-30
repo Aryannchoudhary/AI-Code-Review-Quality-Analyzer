@@ -1,117 +1,142 @@
-# AI-Code-Review-Quality-Analyzer
+#  AI Code Review & Quality Analyzer
 
-## Overview
+An AI-powered system that analyzes Python source code, predicts code quality using Machine Learning, and provides intelligent improvement suggestions using Large Language Models (Groq LLM).
 
-AI Code Review & Quality Analyzer is a hybrid AI-powered system that analyzes Python code quality using Machine Learning, AST-based static code analysis, and Large Language Models (LLMs).
+##  Features
 
-The system extracts software engineering metrics from source code, predicts code quality using trained ML models, and provides intelligent code review insights.
+###  Code Quality Analysis
 
----
+* Analyze Python code instantly
+* Predict code quality levels:
 
-## Features
+  *  Good
+  *  Average
+  *  Poor
 
-* AST-based feature extraction
-* Static code quality analysis
-* Machine Learning-based prediction
-* Random Forest and XGBoost models
+### AI-Powered Code Review
+
+* Generates detailed code review explanations
+* Identifies maintainability issues
+* Highlights complexity concerns
+* Suggests code improvements
+
+###  Explainable AI Dashboard
+
+* Displays extracted code metrics
 * Feature importance visualization
-* Streamlit web application
-* AI-generated review explanations (local Ollama version)
-* Real-world GitHub dataset training
-* Automated software quality assessment
+* Interactive charts and graphs
+* Quality prediction confidence
+
+###  Cloud-Based LLM Integration
+
+* Groq API integration
+* Fast AI explanations
+* No local LLM setup required
+
+###  Streamlit Web Application
+
+* User-friendly interface
+* Real-time code analysis
+* Interactive visualizations
 
 ---
 
-## Tech Stack
+##  Project Architecture
+
+```text
+User Input Python Code
+            │
+            ▼
+Feature Extraction Engine
+            │
+            ▼
+Extracted Metrics
+(LOC, Complexity, Maintainability, Comments, Functions, Classes)
+            │
+            ▼
+XGBoost Model
+            │
+            ▼
+Quality Prediction
+(Good / Average / Poor)
+            │
+            ▼
+Groq LLM
+            │
+            ▼
+AI Explanation & Suggestions
+            │
+            ▼
+Streamlit Dashboard
+```
+
+---
+
+##  Extracted Features
+
+The system analyzes:
+
+* Lines of Code (LOC)
+* Logical Lines of Code (LLOC)
+* Source Lines of Code (SLOC)
+* Cyclomatic Complexity
+* Maintainability Index
+* Number of Functions
+* Number of Classes
+* Import Statements
+* Comments Count
+
+---
+
+##  Tech Stack
+
+### Machine Learning
+
+* Python
+* Scikit-Learn
+* XGBoost
+* Pandas
+* NumPy
+
+### AI & LLM
+
+* Groq API
+* Llama Models
 
 ### Frontend
 
 * Streamlit
 
-### Machine Learning
-
-* Scikit-learn
-* XGBoost
-* Random Forest
-
-### Data Processing
-
-* Pandas
-* NumPy
-
-### Static Code Analysis
-
-* AST
-* Radon
-
 ### Visualization
 
 * Matplotlib
-
-### LLM Integration
-
-* Ollama
-* Llama3
+* Plotly
 
 ---
 
-## Project Architecture
+##  Project Structure
 
 ```text
-User Code
-    │
-    ▼
-Feature Extraction
-(AST + Static Analysis)
-    │
-    ▼
-ML Model (XGBoost)
-    │
-    ▼
-Quality Prediction
-    │
-    ▼
-LLM Explanation (Local Version)
-    │
-    ▼
-Streamlit Web Interface
+AI-Code-Review-Quality-Analyzer/
+│
+├── app.py
+├── models/
+│   └── xgboost.pkl
+│
+├── feature_engineering/
+│   └── feature_extractor.py
+│
+├── llm/
+│   └── groq_explainer.py
+│
+├── data/
+│
+├── notebooks/
+│
+├── requirements.txt
+│
+└── README.md
 ```
-
-
-
-## Dataset
-
-The project uses the CodeSearchNet dataset containing real-world GitHub source code samples.
-
-Dataset Features:
-
-* Cyclomatic Complexity
-* Maintainability Index
-* Lines of Code
-* Comment Density
-* Function Count
-* Class Count
-* Import Count
-
-Dataset Size:
-
-* ~100,000 code samples
-
----
-
-## Machine Learning Models
-
-The following models were trained and evaluated:
-
-* Random Forest Classifier
-* XGBoost Classifier
-
-### Achieved Performance
-
-| Model         | Accuracy |
-| ------------- | -------- |
-| Random Forest | 99.45%   |
-| XGBoost       | 99.50%   |
 
 ---
 
@@ -121,26 +146,7 @@ The following models were trained and evaluated:
 
 ```bash
 git clone https://github.com/Aryannchoudhary/AI-Code-Review-Quality-Analyzer.git
-```
-
-### Navigate to Project Folder
-
-```bash
 cd AI-Code-Review-Quality-Analyzer
-```
-
-### Create Virtual Environment
-
-```bash
-python -m venv venv
-```
-
-### Activate Virtual Environment
-
-#### Windows
-
-```bash
-venv\Scripts\activate
 ```
 
 ### Install Dependencies
@@ -149,9 +155,15 @@ venv\Scripts\activate
 pip install -r requirements.txt
 ```
 
----
+### Configure API Key
 
-## Run Application
+Create Streamlit Secrets or Environment Variable:
+
+```toml
+GROQ_API_KEY="your_api_key"
+```
+
+### Run Application
 
 ```bash
 streamlit run app.py
@@ -159,43 +171,44 @@ streamlit run app.py
 
 ---
 
-## Local LLM Setup (Optional)
+##  Sample Output
 
-Install Ollama:
+### Prediction
 
-https://ollama.com/
-
-Run llama 3:
-
-```bash
-ollama run llama 3
+```text
+Code Quality: Good
 ```
 
-The local version supports AI-generated code review explanations.
+### AI Explanation
+
+```text
+The code demonstrates good maintainability and low complexity.
+Consider adding more comments and error handling to improve readability.
+```
 
 ---
 
-## Future Scope
+##  Future Scope
 
-* Multi-language support
-* IDE integration
-* Security vulnerability detection
-* Transformer-based code analysis
-* Real-time code review
-* CI/CD integration
-* Automated refactoring suggestions
-
----
-
-## Project Type
-
-Final Year AI/ML Project
-Hybrid AI System
-Software Engineering Analytics
+* Rule-Based Code Suggestion Engine
+* Multi-Language Support
+* Security Vulnerability Detection
+* Code Smell Detection
+* CI/CD Integration
+* GitHub Pull Request Review Automation
+* Advanced AI Refactoring Suggestions
+* Transformer-Based Quality Prediction
 
 ---
 
-## Author
+##  Author
 
-Aryan Choudhary
+Aryan
 
+### GitHub
+
+https://github.com/Aryannchoudhary
+
+---
+
+##  If you found this project useful, please give it a star!
