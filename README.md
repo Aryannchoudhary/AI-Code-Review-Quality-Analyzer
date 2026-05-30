@@ -1,8 +1,9 @@
-#  AI Code Review & Quality Analyzer
+# AI Code Review & Quality Analyzer
 
 An AI-powered tool that analyzes Python code and GitHub repositories using Machine Learning + Feature Engineering + LLM-based explanations.
 
 It provides:
+
 - Code quality prediction
 - File-wise repository analysis
 - Repository health score
@@ -11,9 +12,10 @@ It provides:
 
 ---
 
-##  Features
+## Features
 
-###  Code Analysis (Single File)
+### Code Analysis (Single File)
+
 - Paste Python code
 - Predict code quality (Good / Average / Poor)
 - Extract code metrics
@@ -22,7 +24,8 @@ It provides:
 
 ---
 
-###  GitHub Repository Analysis
+### GitHub Repository Analysis
+
 - Analyze complete GitHub repositories
 - Automatically fetch `.py` and `.ipynb` files
 - Extract features from each file
@@ -31,7 +34,8 @@ It provides:
 
 ---
 
-###  File-wise Analysis
+### File-wise Analysis
+
 - Quality prediction per file
 - Maintainability score
 - Complexity score
@@ -40,6 +44,7 @@ It provides:
 ---
 
 ### Repository Health Score
+
 - Overall repository health (0–100)
 - Based on:
   - Maintainability
@@ -52,13 +57,15 @@ It provides:
 ---
 
 ### AI Repository Review
+
 - LLM-powered explanation using Groq/OpenAI
 - Strengths & weaknesses analysis
 - Improvement recommendations
 
 ---
 
-###  PDF Report Generation
+### PDF Report Generation
+
 - Download full analysis report
 - Includes:
   - Repository summary
@@ -69,7 +76,7 @@ It provides:
 
 ---
 
-##  Tech Stack
+## Tech Stack
 
 - Python
 - Streamlit
@@ -83,7 +90,8 @@ It provides:
 
 ---
 
-##  Project Structure
+## Project Structure
+
 AI-Code-Review-Quality-Analyzer/
 │
 ├── app.py
@@ -97,8 +105,6 @@ AI-Code-Review-Quality-Analyzer/
 ├── suggestions.py
 └── requirements.txt
 
-
-
 ---
 
 ## Installation
@@ -109,42 +115,43 @@ cd AI-Code-Review-Quality-Analyzer
 pip install -r requirements.txt
 
 
-## Run application
+### Run application
 
 streamlit run app.py
 
 
 ## Requirements
-streamlit
-pandas
-scikit-learn
-xgboost
-plotly
-requests
-reportlab
-joblib
+- streamlit
+- pandas
+- scikit-learn
+- xgboost
+- plotly
+- requests
+- reportlab
+- joblib
 
 
 ## Output Example
-Code Quality: Good
-Repository Health Score: 87/100
-File-wise Analysis: Table view
-PDF Report: Downloadable
+- Code Quality: Good
+- Repository Health Score: 87/100
+- File-wise Analysis: Table view
+- PDF Report: Downloadable
 
 
 ## Future Improvements
-    Security vulnerability detection (Bandit)
-    GitHub commit history analysis
-    Multi-language support (JS, Java)
-    AI code auto-fixing suggestions
-    Team collaboration dashboard
+- Security vulnerability detection (Bandit)
+- GitHub commit history analysis
+- Multi-language support (JS, Java)
+- AI code auto-fixing suggestions
+- Team collaboration dashboard
 
 
 
 ## Author
-Aryan 
+Aryan
 AI/ML Developer | Python | Streamlit | LLM Apps
 
 If you like this project
 
 Give it a star ⭐ and share it!
+```
