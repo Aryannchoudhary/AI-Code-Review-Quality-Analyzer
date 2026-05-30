@@ -14,6 +14,9 @@ from github_integration.github_fetcher import (
     parse_repo_url
 )
 
+from utils.report_generator import (
+    generate_pdf_report
+)
 
 # Load Trained XGBoost Model
 model = joblib.load("models/xgboost.pkl")
@@ -274,8 +277,54 @@ with tab2:
                         all_features
                     )
 
+                    
                     # Average Metrics
                     avg_metrics = repo_df.mean()
+
+                    
+                    # Repository Health Score Calculation
+                    maintainability = avg_metrics.get(
+                        "maintainability", 0
+                    )
+
+                    complexity = avg_metrics.get(
+                        "avg_complexity", 0
+                    )
+
+                    comments = avg_metrics.get(
+                        "comments", 0
+                    )
+
+                    function_count = avg_metrics.get(
+                        "function_count", 0
+                    )
+
+                    complexity_score = max(
+                        0,
+                        100 - (complexity * 10)
+                    )
+
+                    comments_score = min(
+                        100,
+                        comments * 10
+                    )
+
+                    function_score = min(
+                        100,
+                        function_count * 20
+                    )
+
+                    health_score = round(
+
+                        maintainability * 0.50 +
+
+                        complexity_score * 0.25 +
+
+                        comments_score * 0.15 +
+
+                        function_score * 0.10
+
+                    )
 
                     avg_df = pd.DataFrame(
                         [avg_metrics]
@@ -289,7 +338,41 @@ with tab2:
                     prediction_label = label_map[
                         prediction
                     ]
+                   
+                        
+                    # Repository Health Score UI
+                    st.metric(
+                        "Health Score",
+                        f"{health_score}/100"
+                    )
 
+                    st.progress(
+                        health_score / 100
+                    )
+
+                    if health_score >= 85:
+
+                        st.success(
+                            "Excellent Repository Health"
+                        )
+
+                    elif health_score >= 70:
+
+                        st.info(
+                            "Good Repository Health"
+                        )
+
+                    elif health_score >= 50:
+
+                        st.warning(
+                            "Moderate Repository Health"
+                        )
+
+                    else:
+
+                        st.error(
+                            "Poor Repository Health"
+                        )
                     st.subheader(
                         "Repository Prediction"
                     )
@@ -344,8 +427,29 @@ with tab2:
                         explanation
                     )
 
+                    pdf_file = generate_pdf_report(
+
+                        repo_url,
+                        prediction_label,
+                        health_score,
+                        explanation
+                    )
+
+                    with open(
+                        pdf_file,
+                        "rb"
+                    ) as file:
+
+                        st.download_button(
+                            label=" Download PDF Report",
+                            data=file,
+                            file_name=pdf_file,
+                            mime="application/pdf"
+                        )
+                        
+
         except Exception as e:
 
             st.error(
-                f"Error: {str(e)}"
+                f"Error analyzing repository: {e}"
             )
