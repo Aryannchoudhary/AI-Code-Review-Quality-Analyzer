@@ -1,6 +1,14 @@
 import requests
 
 
+
+def parse_repo_url(repo_url):
+    parts = repo_url.rstrip("/").split("/")
+    owner = parts[-2]
+    repo = parts[-1]
+    return owner, repo
+
+
 def get_python_files(owner, repo):
     """
     Fetch all Python files from a public GitHub repository.
