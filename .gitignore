@@ -10,3 +10,5 @@ data/raw/
 data/processed/
 
 .DS_Store
+
+app2.py

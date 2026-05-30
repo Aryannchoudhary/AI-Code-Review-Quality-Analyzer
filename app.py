@@ -33,7 +33,7 @@ st.set_page_config(
     layout="wide"
 )
 
-st.title("🤖 AI Code Review & Quality Analyzer")
+st.title(" AI Code Review & Quality Analyzer")
 
 st.write(
     "Analyze Python Code or GitHub Repositories using XGBoost + LLM"
